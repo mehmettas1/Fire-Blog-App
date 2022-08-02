@@ -8,7 +8,7 @@ import googlePng from "../assets/google.png";
 
 export default function TextFieldColors() {
   return (
-    <Container className="login-container">
+    <Container className="login-container" sx={{width: "456px", height: "756px"}} >
       <Box
         sx={{
           py: 2,
@@ -72,3 +72,6 @@ export default function TextFieldColors() {
     </Container>
   );
 }
+
+
+
