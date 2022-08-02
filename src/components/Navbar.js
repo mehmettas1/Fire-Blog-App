@@ -12,7 +12,7 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
+import cwLogo from '../assets/cw.jpeg'
 
 const settings = [ 'Register','Login'];
 
@@ -43,7 +43,7 @@ const ResponsiveAppBar = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component="div"
             href="/"
             sx={{
               mr: 2,
@@ -56,7 +56,14 @@ const ResponsiveAppBar = () => {
               
             }}
           >
-           clarusway
+          <img src={cwLogo} alt="cwLogo" style={{width:'40px'}} />
+          </Typography> <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: "pointer", fontFamily:"Girassol",textAlign:"center" }}
+            
+          >
+            ──── <span style={{fontSize:"2rem",color:"#F5DEB3"}}>{"<mehmettas/>"}</span> Blog ────
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -71,8 +78,8 @@ const ResponsiveAppBar = () => {
             </IconButton>
            
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -89,7 +96,7 @@ const ResponsiveAppBar = () => {
             }}
           >
             LOGO
-          </Typography>
+          </Typography> */}
           
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
