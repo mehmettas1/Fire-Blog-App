@@ -5,8 +5,15 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
+signIn
 
 export default function TextFieldColors() {
+
+  const handleLogin =(e)=>{
+    e.prevenDefault();
+    singIn(email,password)
+     
+  } 
   return (
     <Container className="login-container" sx={{width: "456px", height: "756px"}} >
       <Box
@@ -31,17 +38,17 @@ export default function TextFieldColors() {
         >
           ── Login ──   
         </Typography>
-        <TextField placeholder="Email" variant="outlined" color="danger"autoFocus
+        <TextField placeholder="Email"  color="danger"autoFocus
                     autoComplete="email"  />
 
         <TextField placeholder="Password" variant="outlined" color="danger" />
         <Grid item xs={12}>
           <Button
-            style={{ backgroundColor: "#046582", fontWeight: 700 }}
+            style={{ backgroundColor: "#046582", fontWeight: 700,color:"white" }}
             variant="contained"
-            color="primary"
+            
             type="submit"
-            // onClick={handleLogin}
+            onClick={handleLogin}
             fullWidth
           >
             Login

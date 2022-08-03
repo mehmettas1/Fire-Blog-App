@@ -1,3 +1,7 @@
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+import { useEffect, useState } from "react";
 
 
 
@@ -14,48 +18,24 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_appId,
   };
   
+  const firebase = initializeApp(firebaseConfig);
+  export const auth = getAuth(firebase);
+  export const googleProvider = new GoogleAuthProvider();
+
+  export const db = getDatabase(firebase);
+  export default firebase;
+  
 
 
-  export const logOut = () => {
-    signOut(auth);
-  };
-  
-  // https://console.firebase.google.com/
-  // => Authentication => sign-in-method => enable Google
-  // Google ile girişi enable yap
-  // => Authentication => sign-in-method => Authorized domains => add domain
-  // Projeyi deploy ettikten sonra google sign-in çalışması için domain listesine deploy linkini ekle
-  export const signUpProvider = (navigate) => {
-    //? Google ile giriş yapılması için kullanılan firebase metodu
-    const provider = new GoogleAuthProvider();
-    //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
-        navigate('/');
-        toastSuccessNotify('Logged out successfully!');
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        console.log(error);
-      });
-  };
-  
-  export const forgotPassword = (email) => {
-    //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        // Password reset email sent!
-        toastWarnNotify('Please check your mail box!');
-        // alert("Please check your mail box!");
-      })
-      .catch((err) => {
-        toastErrorNotify(err.message);
-        // alert(err.message);
-        // ..
-      });
-  };
-  
+
+
+
+
+
+
+
+
+
 
 
 //   REACT_APP_API_KEY=
