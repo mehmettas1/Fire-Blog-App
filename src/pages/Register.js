@@ -19,6 +19,7 @@ const Register = () => {
         }}
       >
         <Avatar
+        className="login-avatar"
           src={blokPng}
           sx={{ width: "156px", height: "156px", mx: "auto" }}
           alt="avatar-img"

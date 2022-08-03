@@ -19,6 +19,7 @@ export default function TextFieldColors() {
         }}
       >
         <Avatar
+        className="login-avatar"
           src={blokPng}
           sx={{ width: "156px", height: "156px", mx: "auto" }}
           alt="avatar-img"
@@ -30,7 +31,8 @@ export default function TextFieldColors() {
         >
           ── Login ──
         </Typography>
-        <TextField placeholder="Email" variant="outlined" color="danger" />
+        <TextField placeholder="Email" variant="outlined" color="danger"autoFocus
+                    autoComplete="email" />
 
         <TextField placeholder="Password" variant="outlined" color="danger" />
         <Grid item xs={12}>
