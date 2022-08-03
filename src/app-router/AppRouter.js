@@ -1,4 +1,5 @@
 import { BrowserRouter as Router ,Routes,Route} from "react-router-dom"
+import BlogCard from "../components/BlogCard"
 import Navbar from "../components/Navbar"
 import Dashboard from "../pages/Dashboard"
 import Details from "../pages/Details"
@@ -28,6 +29,7 @@ const AppRouter = () => {
         <Route path="/profile" element = {<Profile/>}/>
         <Route path="register" element = {<Register/>}/>
         <Route path="/newblog" element = {<Newblog/>}/>
+        <Route path="/blogcard" element = {<BlogCard/>}/>
     </Routes>
     
     </Router>

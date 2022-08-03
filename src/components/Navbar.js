@@ -57,7 +57,9 @@ const Navbar = () => {
             }}
           >
           <img src={cwLogo} alt="cwLogo" style={{width:'40px'}} />
-          </Typography> <Typography
+          </Typography>
+          
+           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, cursor: "pointer", fontFamily:"Girassol",textAlign:"center" }}

@@ -29,10 +29,10 @@ export default function TextFieldColors() {
           component="h1"
           sx={{ m: 4, fontFamily: "Girassol", color: "#046582" }}
         >
-          ── Login ──
+          ── Login ──   
         </Typography>
         <TextField placeholder="Email" variant="outlined" color="danger"autoFocus
-                    autoComplete="email" />
+                    autoComplete="email"  />
 
         <TextField placeholder="Password" variant="outlined" color="danger" />
         <Grid item xs={12}>

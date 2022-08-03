@@ -43,14 +43,14 @@ export default function TextFieldColors() {
         <TextareaAutosize
       aria-label="minimum height"
       minRows={30}
-      placeholder="Minimum 3 rows"
+      
       style={{ width: "400px", height: "256px", mx: "auto" }}
     />
         <Grid item xs={12}>
           <Button
             style={{ backgroundColor: "#046582", fontWeight: 700, color: "white" }}
             variant="contained"
-           
+          
             type="submit"
             // onClick={handleLogin}
             fullWidth
