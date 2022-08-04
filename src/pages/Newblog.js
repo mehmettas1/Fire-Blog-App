@@ -44,7 +44,7 @@ export default function TextFieldColors() {
       aria-label="minimum height"
       minRows={30}
       
-      style={{ width: "400px", height: "256px", mx: "auto" }}
+      style={{ width: "400px", height: "256px", mx: "auto" ,resize:'none'}}
     />
         <Grid item xs={12}>
           <Button

@@ -5,15 +5,15 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
-signIn
+
 
 export default function TextFieldColors() {
 
-  const handleLogin =(e)=>{
-    e.prevenDefault();
-    singIn(email,password)
+  // const handleLogin =(e)=>{
+  //   e.prevenDefault();
+  //   singIn(email,password)
      
-  } 
+  // } 
   return (
     <Container className="login-container" sx={{width: "456px", height: "756px"}} >
       <Box
@@ -48,7 +48,7 @@ export default function TextFieldColors() {
             variant="contained"
             
             type="submit"
-            onClick={handleLogin}
+            // onClick={handleLogin}
             fullWidth
           >
             Login
