@@ -5,8 +5,27 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
+import { createUser } from "../helpers/firebase";
 
 const Register = () => {
+
+const [firstName, setFirstName] = useState();
+const [lastName, setLastName] = useState();
+const [email, setEmail] = useState();
+const [password, setPassword] = useState();
+
+
+const handleSubmit=(e)=>{
+e.preventDefault()
+console.log(firstName,lastName)
+createUser()
+};
+
+
+
+
+
+
   return (
     <Container className="login-container" sx={{width: "456px", height: "756px"}} >
       <Box
@@ -40,7 +59,7 @@ const Register = () => {
             variant="contained"
             color="primary"
             type="submit"
-            // onClick={handleLogin}
+            onClick={handleSubmit}
             fullWidth
           >
             Login
