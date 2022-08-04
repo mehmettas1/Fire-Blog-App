@@ -6,20 +6,21 @@ import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
 import { createUser } from "../helpers/firebase";
+import {useState} from "react";
 
-const Register = () => {
+ const Register = () => {
 
-const [firstName, setFirstName] = useState();
-const [lastName, setLastName] = useState();
-const [email, setEmail] = useState();
-const [password, setPassword] = useState();
+// const [firstName, setFirstName] = useState();
+// const [lastName, setLastName] = useState();
+// const [email, setEmail] = useState();
+// const [password, setPassword] = useState();
 
 
-const handleSubmit=(e)=>{
-e.preventDefault()
-console.log(firstName,lastName)
-createUser()
-};
+// const handleSubmit=(e)=>{
+// e.preventDefault()
+// console.log(firstName,lastName);
+// createUser(email,password);
+// };
 
 
 
@@ -28,7 +29,7 @@ createUser()
 
   return (
     <Container className="login-container" sx={{width: "456px", height: "756px"}} >
-      <Box
+      <Box  
         sx={{
           py: 2,
           display: "grid",
@@ -59,7 +60,7 @@ createUser()
             variant="contained"
             color="primary"
             type="submit"
-            onClick={handleSubmit}
+           
             fullWidth
           >
             Login

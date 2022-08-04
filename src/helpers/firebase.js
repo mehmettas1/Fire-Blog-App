@@ -1,65 +1,74 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-// import { getDatabase } from "firebase/database";
-// import { useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 
 
+// Import the functions you need from the SDKs you need
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-
-
-
-
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId,
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  export const auth = getAuth(app);
-  // export const googleProvider = new GoogleAuthProvider();
 
-  // export const db = getDatabase(firebase);
-  // export default firebase;
-  
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+
+ 
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
 
 
-;
 
-export const createUser = (email,password)=>{
+const auth = getAuth(app);
+export const createUser = async (email, password, navigate) => {
   try {
-    let userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(userCredential)
-  } catch (err) {
-    console.log(err)
+    let userCredential = await  createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // await updateProfile(auth.currentUser, {
+      // displayName: displayName,
+    // });
+    navigate("/");
+    console.log(userCredential);
+  } catch (error) {
+    console.log(error);
   }
-  
-  
-  
+};
 
+export const login = async (email, password, navigate) => {
+  try {
+    let userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
+    navigate("/");
+    console.log(userCredential);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-//   REACT_APP_API_KEY=
-// REACT_APP_AUTH_DOMAIN=
-// REACT_APP_DATABASE_URL=
-// REACT_APP_PROJECT_ID=
-// REACT_APP_STORAGE_BUCKET=
-// REACT_APP_MESSAGİNG_SENDER_ID=
-// REACT_APP_APP_ID=
+export const logOut = () => {
+  signOut(auth);
+};
