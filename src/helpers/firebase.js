@@ -1,7 +1,8 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getDatabase } from "firebase/database";
-import { useEffect, useState } from "react";
+// import { getDatabase } from "firebase/database";
+// import { useEffect, useState } from "react";
 
 
 
@@ -18,14 +19,31 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_appId,
   };
   
-  const firebase = initializeApp(firebaseConfig);
-  export const auth = getAuth(firebase);
-  export const googleProvider = new GoogleAuthProvider();
+  const app = initializeApp(firebaseConfig);
+  export const auth = getAuth(app);
+  // export const googleProvider = new GoogleAuthProvider();
 
-  export const db = getDatabase(firebase);
-  export default firebase;
+  // export const db = getDatabase(firebase);
+  // export default firebase;
   
 
+
+;
+
+export const createUser = (email,password)=>{
+  try {
+    let userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    console.log(userCredential)
+  } catch (err) {
+    console.log(err)
+  }
+  
+  
+  
+
+
+
+}
 
 
 
