@@ -13,10 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import cwLogo from '../assets/cw.jpeg'
-
+import { AuthContext } from '../contexts/AuthContext';
+import {useContext} from 'react'
 const settings = [ 'Register','Login'];
 
 const Navbar = () => {
+  const{currentUser}=  useContext(AuthContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

@@ -59,7 +59,6 @@ export default function TextFieldColors() {
           type="email"
           variant="outlined"
           onChange={(e) => setEmail(e.target.value)}
-          autoFocus
         />
 
         <TextField
