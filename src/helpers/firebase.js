@@ -37,7 +37,7 @@ export const db = getFirestore(app);
 
 
 const auth = getAuth(app);
-export const createUser = async (email, password, navigate) => {
+export const createUser = async (email, password, navigate,displayName) => {
   try {
     let userCredential = await  createUserWithEmailAndPassword(
       auth,
@@ -63,12 +63,39 @@ export const login = async (email, password, navigate) => {
     );
 
     navigate("/");
-    console.log(userCredential);
+    // sessionStorage.setItem("user",JSON.stringify(userCredential.user));
+    // console.log(userCredential);
   } catch (error) {
     console.log(error);
   }
 };
+export const userObserver = (setCurrentUser) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setCurrentUser(user);
+    } else {
+      // User is signed out
+      setCurrentUser(false);
+    }
+  });
+};
 
 export const logOut = () => {
   signOut(auth);
+};
+
+export const signUpProvider = (navigate) => {
+  //? Google ile giriş yapılması için kullanılan firebase metodu
+  const provider = new GoogleAuthProvider();
+  //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      navigate("/");
+      // toastSuccessNotify("Logged out successfully!");
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      console.log(error);
+    });
 };

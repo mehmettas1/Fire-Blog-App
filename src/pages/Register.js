@@ -19,8 +19,8 @@ const Register = () => {
 
   const handleSubmit = () => {
     console.log(fullName, lastName);
-    const displayName = `${fullName}`;
-    createUser(email, password, navigate);
+    const displayName = `${fullName} ${lastName} `;
+    createUser(email, password, navigate,displayName);
   };
 
   return (
