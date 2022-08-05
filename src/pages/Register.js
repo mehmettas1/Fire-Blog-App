@@ -6,30 +6,28 @@ import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
 import { createUser } from "../helpers/firebase";
-import {useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
- const Register = () => {
+const Register = () => {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
-// const [firstName, setFirstName] = useState();
-// const [lastName, setLastName] = useState();
-// const [email, setEmail] = useState();
-// const [password, setPassword] = useState();
-
-
-// const handleSubmit=(e)=>{
-// e.preventDefault()
-// console.log(firstName,lastName);
-// createUser(email,password);
-// };
-
-
-
-
-
+  const handleSubmit = () => {
+    console.log(firstName, lastName);
+    createUser(email, password, navigate);
+  };
 
   return (
-    <Container className="login-container" sx={{width: "456px", height: "756px"}} >
-      <Box  
+    <Container
+      className="login-container"
+      sx={{ width: "456px", height: "756px" }}
+    >
+      <Box
         sx={{
           py: 2,
           display: "grid",
@@ -39,7 +37,7 @@ import {useState} from "react";
         }}
       >
         <Avatar
-        className="login-avatar"
+          className="login-avatar"
           src={blokPng}
           sx={{ width: "156px", height: "156px", mx: "auto" }}
           alt="avatar-img"
@@ -51,19 +49,40 @@ import {useState} from "react";
         >
           ── Register ──
         </Typography>
-        <TextField placeholder="Email" variant="outlined" color="danger" />
+        <TextField
+          label="Email"
+          name="email"
+          id="email"
+          type="email"
+          placeholder="Email"
+          variant="outlined"
+          color="danger"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <TextField placeholder="Password" variant="outlined" color="danger" />
+        <TextField
+          label="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          variant="outlined"
+          color="danger"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Grid item xs={12}>
           <Button
-            style={{ backgroundColor: "#046582", fontWeight: 700 }}
+            style={{
+              backgroundColor: "#046582",
+              fontWeight: 700,
+              color: "white",
+            }}
             variant="contained"
             color="primary"
             type="submit"
-           
+            onClick={handleSubmit}
             fullWidth
           >
-            Login
+            Register
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -72,13 +91,12 @@ import {useState} from "react";
               backgroundColor: "white",
               color: "black",
               fontWeight: 600,
-              fontSize: "0.9rem"
-              ,background:'grey'
+              fontSize: "0.9rem",
+              background: "grey",
             }}
             variant="contained"
             color="secondary"
             type="submit"
-          
             fullWidth
           >
             With{" "}
@@ -92,6 +110,6 @@ import {useState} from "react";
       </Box>
     </Container>
   );
-}
+};
 
 export default Register;
