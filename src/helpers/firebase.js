@@ -37,16 +37,16 @@ export const db = getFirestore(app);
 
 
 const auth = getAuth(app);
-export const createUser = async (email, password, navigate,displayName) => {
+export const createUser = async (email, password, navigate, displayName) => {
   try {
-    let userCredential = await  createUserWithEmailAndPassword(
+    let userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    // await updateProfile(auth.currentUser, {
-      // displayName: displayName,
-    // });
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
     navigate("/");
     console.log(userCredential);
   } catch (error) {
@@ -85,7 +85,7 @@ export const logOut = () => {
 };
 
 export const signUpProvider = (navigate) => {
-  //? Google ile giriş yapılması için kullanılan firebase metodu
+  // ? Google ile giriş yapılması için kullanılan firebase metodu
   const provider = new GoogleAuthProvider();
   //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
   signInWithPopup(auth, provider)

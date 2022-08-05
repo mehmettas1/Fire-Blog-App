@@ -5,7 +5,7 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
-import { login} from "../helpers/firebase";
+import { login, signUpProvider} from "../helpers/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,9 +18,9 @@ export default function TextFieldColors() {
     // e.prevenDefault();
     login(email, password, navigate);
   };
-  // const handleProviderLogin = () => {
-  //     signUpProvider(navigate);
-  //   };
+  const handleProviderLogin = () => {
+      signUpProvider(navigate);
+    };
   return (
     <Container
       className="login-container"
@@ -96,7 +96,7 @@ export default function TextFieldColors() {
             type="submit"
             fullWidth
             
-            // onClick={handleProviderLogin}
+            onClick={handleProviderLogin}
           >
             With{" "}
             <img
