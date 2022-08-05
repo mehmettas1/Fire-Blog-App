@@ -5,17 +5,27 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
-
+import { login} from "../helpers/firebase";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function TextFieldColors() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
-  // const handleLogin =(e)=>{
-  //   e.prevenDefault();
-  //   singIn(email,password)
-     
-  // } 
+  const handleLogin = () => {
+    // e.prevenDefault();
+    login(email, password, navigate);
+  };
+  // const handleProviderLogin = () => {
+  //     signUpProvider(navigate);
+  //   };
   return (
-    <Container className="login-container" sx={{width: "456px", height: "756px"}} >
+    <Container
+      className="login-container"
+      sx={{ width: "456px", height: "756px" }}
+    >
       <Box
         sx={{
           py: 2,
@@ -26,7 +36,7 @@ export default function TextFieldColors() {
         }}
       >
         <Avatar
-        className="login-avatar"
+          className="login-avatar"
           src={blokPng}
           sx={{ width: "156px", height: "156px", mx: "auto" }}
           alt="avatar-img"
@@ -36,20 +46,39 @@ export default function TextFieldColors() {
           component="h1"
           sx={{ m: 4, fontFamily: "Girassol", color: "#046582" }}
         >
-          ── Login ──   
+          ── Login ──
         </Typography>
-        <TextField placeholder="Email"  color="danger"autoFocus
-                    autoComplete="email"  />
+        <TextField
+          placeholder="Email"
+          color="danger"
+          autoFocus
+          autoComplete="email"
+          label="Email"
+          name="email"
+          id="email"
+          type="email"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+          autoFocus
+        />
 
-        <TextField placeholder="Password" variant="outlined" color="danger" />
+        <TextField
+          placeholder="Password"
+          variant="outlined"
+          color="danger"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Grid item xs={12}>
           <Button
-            style={{ backgroundColor: "#046582", fontWeight: 700,color:"white" }}
+            style={{
+              backgroundColor: "#046582",
+              fontWeight: 700,
+              color: "white",
+            }}
             variant="contained"
-            
             type="submit"
-            // onClick={handleLogin}
             fullWidth
+            onClick={handleLogin}
           >
             Login
           </Button>
@@ -60,14 +89,15 @@ export default function TextFieldColors() {
               backgroundColor: "white",
               color: "black",
               fontWeight: 600,
-              fontSize: "0.9rem"
-              ,background:'grey'
+              fontSize: "0.9rem",
+              background: "grey",
             }}
             variant="contained"
             color="secondary"
             type="submit"
-          
             fullWidth
+            
+            // onClick={handleProviderLogin}
           >
             With{" "}
             <img
@@ -81,6 +111,3 @@ export default function TextFieldColors() {
     </Container>
   );
 }
-
-
-
