@@ -1,122 +1,160 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import cwLogo from '../assets/cw.jpeg'
+import React,{useContext} from 'react'
+// import { logout } from "../utils/firebaseUtil";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import { useNavigate } from "react-router-dom";
+import cwLogo from "../assets/cw.jpeg"
 import { AuthContext } from '../contexts/AuthContext';
-import {useContext} from 'react'
-
-const settings = [ 'Register','Login'];
+import { logout } from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const{currentUser}=  useContext(AuthContext)
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
+    // const [currentUser, setCurrentUser ] = React.useState(true);
+    const { currentUser,logout } = useContext(AuthContext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleLogin = () => {
+    setAnchorEl(null);
+    navigate("/login");
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleLogout = () => {
+    setAnchorEl(null);
+    logout();
+  };
+
+  const handleRegister = () => {
+    setAnchorEl(null);
+    navigate("/register");
+  };
+  const handleProfile = () => {
+    setAnchorEl(null);
+    navigate("/profile");
+  };
+  const handleNewBlog = () => {
+    setAnchorEl(null);
+    navigate("/new-blog");
   };
 
   return (
-    <AppBar position="static" sx={{background: "rgb(4, 101, 130)", height:"70px",}}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+    
+        <Box sx={{ flexGrow: 1}}>
+      <AppBar position="static" style={{backgroundColor:"#046582"}}>
+        <Toolbar>
           <Typography
             variant="h6"
-            noWrap
             component="div"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              
-            }}
+            sx={{ flexGrow: 0, cursor: "pointer" }}
+            onClick={() => navigate("/")}
           >
-          <img src={cwLogo} alt="cwLogo" style={{width:'40px'}} />
+            <img style={{width:"40px"}} src={cwLogo} alt="logo" />
           </Typography>
-          
-           <Typography
+            
+          <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, cursor: "pointer", fontFamily:"Girassol",textAlign:"center" }}
-            
+            onClick={() => navigate("/")}
           >
             ──── <span style={{fontSize:"2rem",color:"#F5DEB3"}}>{"<mehmettas/>"}</span> Blog ────
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              // onClick={() => navigate("/")}
-              color="inherit"
-            >
-            </IconButton>
-           
-          </Box>
-         
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          {
+            currentUser ? (
+                <div>
+              <IconButton
+                size="large"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <Typography
+                  sx={{
+                    marginRight: "1rem",
+                  }}
+                >
+                  {currentUser?.displayName}
+                </Typography>
+                <AccountCircle />
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="right">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={()=>setAnchorEl(null)}
+              >
+                <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                <MenuItem onClick={handleNewBlog}>New</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </div>
+
+            ):(
+
+            <div>
+              <IconButton
+                size="large"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <Typography
+                  sx={{
+                    marginRight: "1rem",
+                  }}
+                >
+                  {currentUser?.displayName}
+                </Typography>
+                <AccountCircle />
+              </IconButton>
+
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleLogin}
+              >
+                <MenuItem onClick={handleLogin}>Login</MenuItem>
+                <MenuItem onClick={handleRegister}>Register</MenuItem>
+              </Menu>
+            </div>
+            )}
         </Toolbar>
-      </Container>
-    </AppBar>
-  );
-};
-export default Navbar;
+      </AppBar>
+    </Box>
+    
+  )
+}
+
+export default Navbar

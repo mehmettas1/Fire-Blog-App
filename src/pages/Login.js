@@ -9,7 +9,7 @@ import { login, signUpProvider} from "../helpers/firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function TextFieldColors() {
+ const Login=()=> {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
@@ -110,3 +110,4 @@ export default function TextFieldColors() {
     </Container>
   );
 }
+export default Login
