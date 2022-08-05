@@ -11,14 +11,15 @@ import { useNavigate } from "react-router-dom";
 // import { Navigate } from "react-router-dom";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState();
+  const [fullName, setFullName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log(firstName, lastName);
+    console.log(fullName, lastName);
+    const displayName = `${fullName}`;
     createUser(email, password, navigate);
   };
 
@@ -50,6 +51,15 @@ const Register = () => {
           ── Register ──
         </Typography>
         <TextField
+            label="Fullname"
+            name="fullname"
+            id="fullname"
+            type="type"
+            variant="outlined"
+            onChange={(e) => setFullName(e.target.value)}
+            autoFocus
+          />
+        <TextField
           label="Email"
           name="email"
           id="email"
@@ -61,13 +71,15 @@ const Register = () => {
         />
 
         <TextField
-          label="password"
+          label="Password"
           name="password"
           id="password"
           placeholder="Password"
           variant="outlined"
           color="danger"
           onChange={(e) => setPassword(e.target.value)}
+          asd
+
         />
         <Grid item xs={12}>
           <Button
