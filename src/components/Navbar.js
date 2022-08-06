@@ -44,7 +44,7 @@ const Navbar = () => {
   };
   const handleNewBlog = () => {
     setAnchorEl(null);
-    navigate("/new-blog");
+    navigate("/newblog");
   };
 
   return (
