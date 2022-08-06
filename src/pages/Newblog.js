@@ -5,15 +5,14 @@ import Button from "@mui/joy/Button";
 import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-
-
-
-
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 export default function TextFieldColors() {
   return (
-    <Container className="login-container" sx={{width: "456px", height: "756px"}} >
+    <Container
+      className="login-container"
+      sx={{ width: "456px", height: "756px" }}
+    >
       <Box
         sx={{
           py: 2,
@@ -24,7 +23,7 @@ export default function TextFieldColors() {
         }}
       >
         <Avatar
-        className="login-avatar"
+          className="login-avatar"
           src={blokPng}
           sx={{ width: "156px", height: "156px", mx: "auto" }}
           alt="avatar-img"
@@ -36,33 +35,53 @@ export default function TextFieldColors() {
         >
           ── New Blog ──
         </Typography>
-        <TextField placeholder="Email" variant="outlined" color="danger"autoFocus
-                    autoComplete="email" />
+        <TextField
+          id="title"
+          label="Title"
+          name="title"
+          autoComplete="title"
+          variant="outlined"
+          color="danger"
+          autoFocus
+        />
 
-        <TextField placeholder="Password" variant="outlined" color="danger" />
+        <TextField
+          name="imageUrl"
+          label="Image URL"
+          type="url"
+          id="imageUrl"
+          variant="outlined"
+          color="danger"
+        />
         <TextareaAutosize
-      aria-label="minimum height"
-      minRows={30}
-      
-      style={{ width: "400px", height: "256px", mx: "auto" ,resize:'none'}}
-    />
+          name="content"
+          label="Content"
+          id="content"
+          aria-label="minimum height"
+          minRows={30}
+          style={{
+            width: "400px",
+            height: "256px",
+            mx: "auto",
+            resize: "none",
+          }}
+        />
         <Grid item xs={12}>
           <Button
-            style={{ backgroundColor: "#046582", fontWeight: 700, color: "white" }}
+            style={{
+              backgroundColor: "#046582",
+              fontWeight: 700,
+              color: "white",
+            }}
             variant="contained"
-          
             type="submit"
             // onClick={handleLogin}
             fullWidth
           >
-           SUBMIT
+            SUBMIT
           </Button>
         </Grid>
-       
       </Box>
     </Container>
   );
 }
-
-
-
