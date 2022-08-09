@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-import { useData } from "../helpers/crud";
+import { getData } from "../helpers/crud";
 import loadingSpinner from "../assets/loading.gif";
 import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
@@ -10,12 +10,12 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const Dashboard = () => {
   const { loading } = useContext(AuthContext);
-  const { users } = useData();
+//  getData();
   const navigate = useNavigate();
   // console.log(users);
 
   // console.log(loading);
-
+console.log(getData())
   return (
     <>
       <Typography
@@ -42,7 +42,7 @@ const Dashboard = () => {
       ) : (
         <Container>
           <Grid container justifyContent="center" spacing={4} sx={{ mt: 1 }}>
-            {users?.map((user) => {
+            {/* {users?.map((user) => {
               const { id } = user;
               return (
                 <Grid
@@ -56,7 +56,7 @@ const Dashboard = () => {
                   <BlogCard user={user} />
                 </Grid>
               );
-            })}
+            })} */}
           </Grid>
         </Container>
       )}

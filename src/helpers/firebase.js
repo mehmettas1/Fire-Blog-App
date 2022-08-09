@@ -61,7 +61,7 @@ export const login = async (email, password, navigate) => {
       email,
       password
     );
-
+console.log(userCredential);
     navigate("/");
     // sessionStorage.setItem("user",JSON.stringify(userCredential.user));
     // console.log(userCredential);

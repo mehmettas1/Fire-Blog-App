@@ -12,14 +12,15 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import cwLogo from "../assets/cw.jpeg"
 import { AuthContext } from '../contexts/AuthContext';
-import { logout } from "../contexts/AuthContext";
+import { logOut } from '../helpers/firebase';
+
 
 const Navbar = () => {
     const navigate = useNavigate();
     // const [currentUser, setCurrentUser ] = React.useState(true);
-    const { currentUser,logout } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+// console.log(currentUser);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -31,7 +32,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     setAnchorEl(null);
-    logout();
+    logOut();
   };
 
   const handleRegister = () => {
@@ -120,13 +121,7 @@ const Navbar = () => {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <Typography
-                  sx={{
-                    marginRight: "1rem",
-                  }}
-                >
-                  {currentUser?.displayName}
-                </Typography>
+                
                 <AccountCircle />
               </IconButton>
 

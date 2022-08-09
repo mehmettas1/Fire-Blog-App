@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { addDoc } from "firebase/firestore";
+import { collection, doc, getDocs } from "firebase/firestore";
+import { addDoc} from "firebase/firestore";
 import { AuthContext } from "../contexts/AuthContext";
+import { async } from "@firebase/util";
 
 // export const createBlog = (info) => {
 //   const cardCollectionRef = collection(db, "users");
@@ -17,18 +18,14 @@ import { AuthContext } from "../contexts/AuthContext";
 //   };
 //   createCard();
 // };
+const dataCollectionRef = collection(db,"users")
 
-export const useData = () => {
-  const [users, setUsers] = useState(null);
-  const usersCollectionRef = collection(db, "users");
-  const { setLoading } = useContext(AuthContext);
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      setLoading(false);
-    };
-    getUsers();
-  }, []);
-  return { users };
-};
+export const getData = async()=>{
+  const data = await getDocs(dataCollectionRef)
+  const data1 = data.docs.map(doc=>
+    ({...doc.data(),id:doc.id})
+  )
+
+return data1
+
+}
