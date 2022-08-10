@@ -9,11 +9,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Button, CardHeader } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function RecipeReviewCard({ user }) {
   const { content, date, email, id, title, imageUrl } = user;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // console.log(user);
   return (
     <Card sx={{ width: "500px", height: "500px" }}>

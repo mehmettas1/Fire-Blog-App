@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-import { getData } from "../helpers/crud";
+import { useData } from "../helpers/crud";
 import loadingSpinner from "../assets/loading.gif";
 import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
@@ -15,7 +15,7 @@ const Dashboard = () => {
   // console.log(users);
 
   // console.log(loading);
-console.log(getData())
+console.log(useData())
   return (
     <>
       <Typography
