@@ -10,6 +10,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const Dashboard = () => {
   const { loading } = useContext(AuthContext);
+  const { users } = useData();
 //  getData();
   const navigate = useNavigate();
   // console.log(users);
@@ -42,7 +43,7 @@ console.log(useData())
       ) : (
         <Container>
           <Grid container justifyContent="center" spacing={4} sx={{ mt: 1 }}>
-            {/* {users?.map((user) => {
+            {users?.map((user) => {
               const { id } = user;
               return (
                 <Grid
@@ -56,7 +57,7 @@ console.log(useData())
                   <BlogCard user={user} />
                 </Grid>
               );
-            })} */}
+            })}
           </Grid>
         </Container>
       )}
