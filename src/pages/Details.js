@@ -52,12 +52,12 @@ export default function RecipeReviewCard() {
           <CardMedia
             component="img"
             height="300"
-            image={part.imageUrl}
+            image={part.imgurl}
             alt="Paella dish"
           />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              {part.content}
+              {part.desc}
             </Typography>
           </CardContent>
           <CardContent>

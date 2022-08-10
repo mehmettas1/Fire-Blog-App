@@ -33,6 +33,7 @@ const Navbar = () => {
   const handleLogout = () => {
     setAnchorEl(null);
     logOut();
+    navigate("/login")
   };
 
   const handleRegister = () => {

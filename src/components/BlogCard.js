@@ -53,7 +53,7 @@ export default function RecipeReviewCard({ user }) {
           <ChatBubbleOutlineIcon />
         </IconButton>
         <Button
-          // onClick={() => navigate(`${id}`, { state: user })}
+          onClick={() => navigate("details", { state: user, replace: false })}
           sx={{ left: "250px" }}
           variant="outlined"
         >
