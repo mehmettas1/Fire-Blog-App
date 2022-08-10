@@ -12,14 +12,14 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log(fullName, lastName);
-    const displayName = `${fullName} ${lastName} `;
+    console.log(fullName);
+    const displayName = `${fullName}  `;
     createUser(email, password, navigate,displayName);
   };
 
