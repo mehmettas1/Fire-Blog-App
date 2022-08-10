@@ -6,8 +6,14 @@ import { Avatar, Container, Grid, Typography } from "@mui/material";
 import blokPng from "../assets/blok.png";
 import googlePng from "../assets/google.png";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { useState } from "react";
 
-export default function TextFieldColors() {
+
+export default function NewBlog() {
+  const [title, setTitle] = useState("");
+  const [imgUrl, setİmgUrl] = useState();
+  const [desc, setDesc] = useState("");
+  console.log(title,imgUrl,desc);
   return (
     <Container
       className="login-container"
@@ -43,6 +49,8 @@ export default function TextFieldColors() {
           variant="outlined"
           color="danger"
           autoFocus
+          value={title}
+          onChange={(e)=>setTitle(e.target.value)}
         />
 
         <TextField
@@ -52,6 +60,9 @@ export default function TextFieldColors() {
           id="imageUrl"
           variant="outlined"
           color="danger"
+          value={imgUrl}
+          onChange={(e)=>setİmgUrl(e.target.value)}
+
         />
         <TextareaAutosize
           name="content"
@@ -65,6 +76,8 @@ export default function TextFieldColors() {
             mx: "auto",
             resize: "none",
           }}
+          value={desc}
+          onChange={(e)=>setDesc(e.target.value)}
         />
         <Grid item xs={12}>
           <Button
@@ -75,7 +88,8 @@ export default function TextFieldColors() {
             }}
             variant="contained"
             type="submit"
-            // onClick={handleLogin}
+            // onClick={han
+            
             fullWidth
           >
             SUBMIT

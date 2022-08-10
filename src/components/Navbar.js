@@ -47,7 +47,7 @@ const Navbar = () => {
     setAnchorEl(null);
     navigate("/newblog");
   };
-
+console.log(currentUser)
   return (
     
         <Box sx={{ flexGrow: 1}}>

@@ -11,12 +11,12 @@ import { AuthContext } from "../contexts/AuthContext";
 const Dashboard = () => {
   const { loading } = useContext(AuthContext);
   const { users } = useData();
-//  getData();
+  //  getData();
   const navigate = useNavigate();
   // console.log(users);
 
   // console.log(loading);
-console.log(useData())
+  console.log(users);
   return (
     <>
       <Typography
@@ -43,21 +43,9 @@ console.log(useData())
       ) : (
         <Container>
           <Grid container justifyContent="center" spacing={4} sx={{ mt: 1 }}>
-            {users?.map((user) => {
-              const { id } = user;
-              return (
-                <Grid
-                  onClick={() =>
-                    navigate("details", { state: user, replace: false })
-                  }
-                  style={{ cursor: "pointer" }}
-                  key={id}
-                  item
-                >
-                  <BlogCard user={user} />
-                </Grid>
-              );
-            })}
+            {users?.map((user, i) => (
+              <BlogCard key={i} user={user} />
+            ))}
           </Grid>
         </Container>
       )}

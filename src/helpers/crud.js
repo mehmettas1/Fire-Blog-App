@@ -9,10 +9,10 @@ export const createBlog = (info) => {
   const cardCollectionRef = collection(db, "users");
   const createCard = async () => {
     await addDoc(cardCollectionRef, {
-      imageUrl: info.imageUrl,
+      imgurl: info.imageUrl,
       title: info.title,
       date: info.date,
-      content: info.content,
+      description: info.content,
       email: info.email,
     });
   };
@@ -35,10 +35,17 @@ export const useData = () => {
   const { setLoading } = useContext(AuthContext);
   useEffect(() => {
     const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      setLoading(false);
-      console.log("merhaba");
+      try {
+        const data = await getDocs(usersCollectionRef);
+        setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setLoading(false);
+        console.log("merhaba");
+      } catch (error) {
+        console.log(error.message)
+      }
+
+
+    
     };
     getUsers();
     // eslint-disable-next-line
