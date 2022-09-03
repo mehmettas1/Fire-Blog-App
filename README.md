@@ -1,3 +1,7 @@
+![Animation](https://user-images.githubusercontent.com/101858286/188282572-5fdcba0b-89a1-419b-9ba8-0a8891e7d821.gif)
+
+
+
 <p>Clarusway<img align="right"
   src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"  width="15px"></p>
 
